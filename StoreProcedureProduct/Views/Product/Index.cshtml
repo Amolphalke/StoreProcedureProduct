@@ -1,0 +1,30 @@
+﻿@model IEnumerable<StoreProcedureProduct.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<a asp-action="Create" class="btn btn-success">Create Product</a>
+<br/>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var i in Model)
+        {<tr>
+            <td>@Html.DisplayFor(Model=>i.Name)</td>
+            <td>@Html.DisplayFor(Model=>i.Price)</td>
+            <td>
+                <a asp-controller="Product" asp-action="Edit" asp-route-id="@i.ProductId" class="btn btn-info">Edit</a>
+                <a asp-controller="Product" asp-action="Details" asp-route-id="@i.ProductId" class="btn btn-info">Details</a>
+                <a asp-controller="Product" asp-action="Delete" asp-route-id="@i.ProductId" class="btn btn-info">Delete</a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
